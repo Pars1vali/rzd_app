@@ -5,7 +5,6 @@ import requests
 
 url="https://pars1vali-rzd-c40d.twc1.net/audio"
 
-
 def send_audio(uploaded_file):
     files = {"file": (uploaded_file.name, uploaded_file.getvalue())}
     response = requests.post(url, files=files)
