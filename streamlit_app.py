@@ -3,7 +3,7 @@ import json
 import streamlit as st
 import requests
 
-url="https://pars1vali-rzd-9288.twc1.net/audio"
+url="https://pars1vali-rzd-c40d.twc1.net/audio"
 
 
 def send_audio(uploaded_file):
@@ -13,7 +13,7 @@ def send_audio(uploaded_file):
     if response.status_code == 200:
         response_json = json.loads(response.text)
         st.write(response_json)
-        st.success(f"File '{uploaded_file.name}' uploaded successfully!")
+        st.success("Файл обработан!")
     else:
         st.error(f"Failed to upload file. Status code: {response.status_code}")
 
