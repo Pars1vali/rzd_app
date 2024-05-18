@@ -3,7 +3,7 @@ import json
 import streamlit as st
 import requests
 
-url="https://pars1vali-rzd-c40d.twc1.net/audio"
+url="https://pars1vali-rzd-0f52.twc1.net/audio"
 
 def send_audio(uploaded_file):
     files = {"file": (uploaded_file.name, uploaded_file.getvalue())}
