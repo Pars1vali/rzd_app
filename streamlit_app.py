@@ -16,8 +16,9 @@ def send_audio(uploaded_file):
 
         if response_json["speech_valid"] is True:
             container.image("assets/happy.png", width=135)
-            container.json(response_json["text"], expanded=False)
             container.markdown("**Переговоры соответствуют регламенту**")
+            container.markdown("**Текст**")
+            container.json(response_json["text"], expanded=False)
         else:
             problems = []
             for problem in response_json["type_problem"]:
