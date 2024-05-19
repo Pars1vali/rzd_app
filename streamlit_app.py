@@ -6,6 +6,7 @@ import streamlit as st
 url = "https://pars1vali-rzd-c40d.twc1.net/audio"
 
 
+
 def send_audio(uploaded_file):
     files = {"file": (uploaded_file.name, uploaded_file.getvalue())}
     response = requests.post(url, files=files)
@@ -39,7 +40,9 @@ def send_audio(uploaded_file):
             container.json(response_json["text"], expanded=False)
 
 
-st.title("РЖД для служебных переговоров")
+title, image = st.columns(2)
+title.title("Анализатор служебных переговоров")
+image.image("assets/logo.png",width=200)
 uploaded_file = st.file_uploader("Загрузите аудио", type=["wav", "mp3"])
 
 if uploaded_file is not None:
