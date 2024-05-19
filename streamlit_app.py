@@ -30,13 +30,13 @@ def send_audio(uploaded_file):
                     problems.append("Неизвестная причина")
 
             container.image("assets/sad.png", width=135)
-            container.json(response_json["text"], expanded=False)
             container.markdown("**Переговоры не соответствуют регламенту**.")
             container.markdown("Причины:")
             for problem in problems:
                 container.markdown("- " + problem)
 
-            # st.json(response_json)
+            container.markdown("**Текст**")
+            container.json(response_json["text"], expanded=False)
 
 
 st.title("РЖД для служебных переговоров")
