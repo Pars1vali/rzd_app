@@ -17,22 +17,23 @@ def send_audio(uploaded_file):
         if response_json["speech_valid"] is True:
             container.image("assets/happy.png", width=135)
             container.json(response_json["text"], expanded=False)
-            container.write("Переговоры соответствуют регламенту")
+            container.markdown("**Переговоры соответствуют регламенту**")
         else:
-            problems = None
+            problems = []
             for problem in response_json["type_problem"]:
                 if problem == "special_words":
-                    problems = "Использование запрещенных слов"
+                    problems.append("Использование запрещенных слов")
                 elif problem == "template_error":
-                    problems = "Нарушение шаблона"
+                    problems.append("Нарушение шаблона")
                 else:
-                    problems = "Неизвестная причина"
+                    problems.append("Неизвестная причина")
 
             container.image("assets/sad.png", width=135)
             container.json(response_json["text"], expanded=False)
-            container.write(
-                f"Переговоры не соответствуют регламенту. Причина: {problems}"
-            )
+            container.markdown("**Переговоры не соответствуют регламенту**.")
+            container.markdown("Причины:")
+            for problem in problems:
+                container.markdown("- " + problem)
 
             # st.json(response_json)
 
